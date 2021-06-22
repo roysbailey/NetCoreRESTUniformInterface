@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "63705f8c-03ee-44d3-902d-88c84539cef7",
+		"name": "AS - Sample hypermedia API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET All apprentices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/apprentices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST new apprentice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"Albert\",\r\n        \"lastName\": \"Davidson\",\r\n        \"dateOfBirth\": \"1989-05-11T00:00:00\",\r\n        \"personalDetailsConfirmedOn\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Confirm Personal Details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/Apprentices/1/confirm-personal-details",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"Apprentices",
+						"1",
+						"confirm-personal-details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET single apprentice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/Apprentices/1",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"Apprentices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET apprentices apprenticeship",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1/apprenticeships/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST apprentices apprenticeship",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"standardName\": \"Chimney Sweep\",\r\n    \"level\": 2,\r\n    \"startDate\": \"2021-09-12T00:00:00\",\r\n    \"endDate\": \"2023-09-06T00:00:00\",\r\n    \"employer\": \"Chimneys 4 u Ltd\",\r\n    \"provider\": \"University of London\",\r\n    \"confirmedSection1\": false,\r\n    \"confirmedSection2\": false,\r\n    \"confirmedSection3\": false,\r\n    \"apprenticeshipConfirmedOn\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1/apprenticeships",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET apprentice apprenticeships",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1/apprenticeships",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST confirm section 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/apprentices/1/apprenticeships/1/confirm-section-1",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"1",
+						"confirm-section-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST confirm section 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/apprentices/1/apprenticeships/1/confirm-section-2",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"1",
+						"confirm-section-2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST confirm section 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/apprentices/1/apprenticeships/1/confirm-section-3",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"1",
+						"confirm-section-3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST confirm apprenticeship",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/apprentices/1/apprenticeships/1/confirm",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"1",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH apprentice",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"value\": \"new@email.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH apprentice two values",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"value\": \"even-newer@email.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    },\r\n    {\r\n        \"value\": \"NewMarriedName\",\r\n        \"path\": \"/LastName\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
