@@ -10,10 +10,10 @@ This API uses a sample domain of apprentices and apprenticeships.  It exposes an
 
 ## PATCH
 
-The repo also demonstrates the use of the PATCH verb to perform partial updates to resources.  In a recent project, I saw individual attributes of a resource exposed as totally different resources, which a client was expected to POST to  update :-(.  E.g. `/api/apprentice/322/emailauto`
-.  When I queried this, I was told they didn't want to do a PUT to `/api/apprentice/322auto`
- to update the entire representation of the resource, so had exposed email separately.  The issue with this of course (in addition to not being entirely RESTful) is that exposing many attributes in this manner, e.g. `/api/apprentice/322/emailauto`
- and `/api/apprentice/322/dateOfBirthauto`
+The repo also demonstrates the use of the PATCH verb to perform partial updates to resources.  In a recent project, I saw individual attributes of a resource exposed as totally different resources, which a client was expected to POST to  update :-(.  E.g. `/api/apprentice/322/email`
+.  When I queried this, I was told they didn't want to do a PUT to `/api/apprentice/322`
+ to update the entire representation of the resource, so had exposed email separately.  The issue with this of course (in addition to not being entirely RESTful) is that exposing many attributes in this manner, e.g. `/api/apprentice/322/email`
+ and `/api/apprentice/322/dateOfBirth`
  would lead to clients having to call many endpoints with no transaction between them for the updates (i.e. some attributes get updated, others do not).  As a result, I suggested I created a simple example to show how PATCH could be used to perform a partial resource update on the ACTUAL resource `/api/apprentice/322` without the need to expose additional child resources.
 
 JSON Patch is a standard following this [RFC](https://datatracker.ietf.org/doc/html/rfc6902).  Which provides a standard JSON definition regarding how to patch a resource.  The example herein follows that standard.
