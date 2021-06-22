@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreRESTUniformInterface", "NetCoreRESTUniformInterface\NetCoreRESTUniformInterface.csproj", "{B829D4DB-7D62-4BD6-A6D5-8BCDB8C03923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDomain", "SampleDomain\SampleDomain.csproj", "{DA9FBB88-B085-4841-8B40-59AA6F74CD8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B829D4DB-7D62-4BD6-A6D5-8BCDB8C03923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B829D4DB-7D62-4BD6-A6D5-8BCDB8C03923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B829D4DB-7D62-4BD6-A6D5-8BCDB8C03923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B829D4DB-7D62-4BD6-A6D5-8BCDB8C03923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA9FBB88-B085-4841-8B40-59AA6F74CD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA9FBB88-B085-4841-8B40-59AA6F74CD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA9FBB88-B085-4841-8B40-59AA6F74CD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA9FBB88-B085-4841-8B40-59AA6F74CD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60E4C7A7-5F3D-4A13-8F6F-872B8DAFB9B8}
+	EndGlobalSection
+EndGlobal
