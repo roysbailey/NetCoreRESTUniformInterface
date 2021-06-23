@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "apprentices",
+      "launchUrl": "resources",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "NetCoreRESTUniformInterface": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "apprentices",
+      "launchUrl": "resources",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

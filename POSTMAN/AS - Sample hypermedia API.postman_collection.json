@@ -6,6 +6,25 @@
 	},
 	"item": [
 		{
+			"name": "Root resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "HTTPS://localhost:44329/resources",
+					"protocol": "HTTPS",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET All apprentices",
 			"request": {
 				"method": "GET",
@@ -31,7 +50,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"firstName\": \"Albert\",\r\n        \"lastName\": \"Davidson\",\r\n        \"dateOfBirth\": \"1989-05-11T00:00:00\",\r\n        \"personalDetailsConfirmedOn\": null\r\n}",
+					"raw": "{\r\n        \"firstName\": \"Albert\",\r\n        \"lastName\": \"Davidson\",\r\n        \"dateOfBirth\": \"1989-05-11T00:00:00\",\r\n        \"email\": \"da@albesrtson.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -122,7 +141,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"standardName\": \"Chimney Sweep\",\r\n    \"level\": 2,\r\n    \"startDate\": \"2021-09-12T00:00:00\",\r\n    \"endDate\": \"2023-09-06T00:00:00\",\r\n    \"employer\": \"Chimneys 4 u Ltd\",\r\n    \"provider\": \"University of London\",\r\n    \"confirmedSection1\": false,\r\n    \"confirmedSection2\": false,\r\n    \"confirmedSection3\": false,\r\n    \"apprenticeshipConfirmedOn\": null\r\n}",
+					"raw": "{\r\n    \"standardName\": \"Chimney Sweep\",\r\n    \"level\": 2,\r\n    \"startDate\": \"2021-09-12T00:00:00\",\r\n    \"endDate\": \"2023-09-06T00:00:00\",\r\n    \"employer\": \"Chimneys 4 u Ltd\",\r\n    \"provider\": \"University of London\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

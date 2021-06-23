@@ -24,6 +24,7 @@ namespace NetCoreRESTUniformInterface.Models
 
             var links = new List<Link>();
             links.Add(new Link { Rel = "self", Href = urlHelper.RouteUrl(RouteNames.Apprentice, new { Id = Id }, "HTTPS"), Type = "GET" });
+            links.Add(new Link { Rel = "Update", Href = urlHelper.RouteUrl(RouteNames.Apprentice, new { Id = Id }, "HTTPS"), Type = "PATCH" });
             if (!PersonalDetailsConfirmedOn.HasValue)
                 links.Add(new Link { Rel = RouteNames.ConfirmApprenticePersonalDetails, Href = urlHelper.RouteUrl(RouteNames.ConfirmApprenticePersonalDetails, new { Id = Id }, "HTTPS"), Type = "POST" });
             else

@@ -35,3 +35,11 @@ public IActionResult PatchApprentice(int id, [FromBody] JsonPatchDocument<Appren
     return Ok(appR);
 }
 ```
+
+## Running the sample
+
+Clone the repo and open the solution file in Visual Studio 2019.  Hit F5 to run, no dependencies as all data is stored within an in-memory collection.
+
+## Navigating the API
+
+Because of the hypermedia links, the API should be very easy to navigate.  Simply start by hitting the `/resources` endpoint, which advertises the resources available.  Then as you navigate to a resource you will see links advertised from that resource showing the available actions.  I have also included a [POSTMAN](https://www.postman.com/) collection within the repo [which you can download](https://github.com/roysbailey/NetCoreRESTUniformInterface/blob/main/POSTMAN/AS%20-%20Sample%20hypermedia%20API.postman_collection.json), this contains s all of the API actions coded and ready to go, simply import the collection into your local copy of POSTMAN and you are away.
