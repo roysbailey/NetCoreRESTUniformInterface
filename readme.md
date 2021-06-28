@@ -36,6 +36,10 @@ public IActionResult PatchApprentice(int id, [FromBody] JsonPatchDocument<Appren
 }
 ```
 
+### PATCH and Open API specification
+
+When Swashbuckle generates your Open API specification, it almost gets it correct for `JsonPatchDocument` but not quite.  It seems to add an additional attribute to the definition which is NOT part of the JSON Patch RFC.  To remove the additional erroneous attribute from the API definition, you need to add a [document filter](https://github.com/roysbailey/NetCoreRESTUniformInterface/blob/main/NetCoreRESTUniformInterface/Infrastructure/JsonPatchDocumentFilter.cs) to remove it.
+
 ## Running the sample
 
 Clone the repo and open the solution file in Visual Studio 2019.  Hit F5 to run, no dependencies as all data is stored within an in-memory collection.
