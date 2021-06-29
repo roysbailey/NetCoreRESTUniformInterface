@@ -50,7 +50,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"firstName\": \"Albert\",\r\n        \"lastName\": \"Davidson\",\r\n        \"dateOfBirth\": \"1989-05-11T00:00:00\",\r\n        \"email\": \"da@albesrtson.com\"\r\n}",
+					"raw": "{\r\n        \"firstName\": \"Albert\",\r\n        \"lastName\": \"Davidson\",\r\n        \"dateOfBirth\": \"1989-05-11T00:00:00\",\r\n        \"email\": \"rb@bobbins.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,6 +66,66 @@
 					"port": "44329",
 					"path": [
 						"apprentices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH apprentice",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"value\": \"rb1@bobbins.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1/apprenticeships/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH apprentice two values",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"value\": \"rb1@bobbins.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    },\r\n    {\r\n        \"value\": \"NewMarriedName\",\r\n        \"path\": \"/LastName\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1"
 					]
 				}
 			},
@@ -186,6 +246,37 @@
 			"response": []
 		},
 		{
+			"name": "PATCH apprentice Copy",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"value\": \"2021-08-03T00:00:00\",\r\n        \"path\": \"/StartDate\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44329/apprentices/1/apprenticeships/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"apprentices",
+						"1",
+						"apprenticeships",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST confirm section 1",
 			"request": {
 				"method": "POST",
@@ -272,64 +363,6 @@
 						"apprenticeships",
 						"1",
 						"confirm"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PATCH apprentice",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n    {\r\n        \"value\": \"new@email.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:44329/apprentices/1",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44329",
-					"path": [
-						"apprentices",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PATCH apprentice two values",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\r\n    {\r\n        \"value\": \"even-newer@email.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    },\r\n    {\r\n        \"value\": \"NewMarriedName\",\r\n        \"path\": \"/LastName\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://localhost:44329/apprentices/1",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "44329",
-					"path": [
-						"apprentices",
-						"1"
 					]
 				}
 			},

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NetCoreRESTUniformInterface.Infrastructure;
+using SampleDomain.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,9 @@ namespace NetCoreRESTUniformInterface
             {
                 c.DocumentFilter<JsonPatchDocumentFilter>();
             });
+
+            services.AddSingleton<IApprenticeCache, ApprenticeCache>();
+            services.AddSingleton<IApprenticeshipsCache, ApprenticeshipsCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

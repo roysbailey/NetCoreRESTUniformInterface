@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NetCoreRESTUniformInterface.Infrastructure;
-using NetCoreRESTUniformInterface.Infrastructure.Services;
 using NetCoreRESTUniformInterface.Models;
 using SampleDomain;
 using SampleDomain.Infrastructure;
+using SampleDomain.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,24 +19,29 @@ namespace NetCoreRESTUniformInterface.Controllers
     public class ApprenticesController : ControllerBase
     {
         private readonly ILogger<ApprenticesController> _logger;
+        private IApprenticeCache _apprenticeCache;
 
-        public ApprenticesController(ILogger<ApprenticesController> logger)
+        public ApprenticesController(ILogger<ApprenticesController> logger, IApprenticeCache apprenticeCache)
         {
             _logger = logger;
+            _apprenticeCache = apprenticeCache;
         }
 
         [HttpPost("", Name = RouteNames.Apprentices)]
         public IActionResult Post(Apprentice apprentice)
         {
-            apprentice.Id = ApprenticeCache.Apprentices.Max(a => a.Id) + 1;
-            ApprenticeCache.Apprentices.Add(apprentice);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            apprentice.Id = _apprenticeCache.Apprentices.Max(a => a.Id) + 1;
+            _apprenticeCache.Apprentices.Add(apprentice);
             return new CreatedResult(Url.RouteUrl(RouteNames.Apprentice, new { Id = apprentice.Id }, "HTTPS"), new ApprenticeResource(apprentice, Url));
         }
 
         [HttpGet("", Name = RouteNames.Apprentices)]
         public IActionResult Get()
         {
-            var appResources = ApprenticeCache.Apprentices.Select(a => new ApprenticeResource(a, Url));
+            var appResources = _apprenticeCache.Apprentices.Select(a => new ApprenticeResource(a, Url));
             var wrappedResponse = new
             {
                 Items = appResources,
@@ -47,7 +53,7 @@ namespace NetCoreRESTUniformInterface.Controllers
         [HttpGet("{Id}", Name = RouteNames.Apprentice)]
         public IActionResult GetApprentice(int id)
         {
-            var app = ApprenticeCache.Apprentices.Where(a => a.Id == id).FirstOrDefault();
+            var app = _apprenticeCache.Apprentices.Where(a => a.Id == id).FirstOrDefault();
             if (app == default(Apprentice))
                 return NotFound();
 
@@ -58,13 +64,30 @@ namespace NetCoreRESTUniformInterface.Controllers
         [HttpPatch("{Id}", Name = RouteNames.Apprentice)]
         public IActionResult PatchApprentice(int id, [FromBody] JsonPatchDocument<Apprentice> apprenticePatch)
         {
-            var app = ApprenticeCache.Apprentices.Where(a => a.Id == id).FirstOrDefault();
+            var app = _apprenticeCache.Apprentices.FirstOrDefault(a => a.Id == id);
             if (app == default(Apprentice))
                 return NotFound();
+            var tmpApp = new Apprentice(app);
 
-            // Apply the PATCH instructio to the entity
-            apprenticePatch.ApplyTo(app);
+            // Apply the PATCH instruction to the entity
+            try
+            {
+                apprenticePatch.ApplyTo(tmpApp);
+                TryValidateModel(tmpApp);
+            }
+            catch (JsonPatchException jpe)
+            {
+                ModelState.AddModelError("error", jpe.Message);
+            }
+            catch (ArgumentNullException ane)
+            {
+                ModelState.AddModelError("error", ane.Message);
+            }
 
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            app = tmpApp;
             var appR = new ApprenticeResource(app, Url);
             return Ok(appR);
         }
@@ -72,9 +95,12 @@ namespace NetCoreRESTUniformInterface.Controllers
         [HttpPost("{Id}/confirm-personal-details", Name = RouteNames.ConfirmApprenticePersonalDetails)]
         public IActionResult ConfirmPersonalDetailsPost(int id)
         {
-            var app = ApprenticeCache.Apprentices.FirstOrDefault(a => a.Id == id);
+            var app = _apprenticeCache.Apprentices.FirstOrDefault(a => a.Id == id);
             if (app == default(Apprentice))
-                return BadRequest();
+                ModelState.AddModelError("Id", "The specificed ID was not found");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             app.PersonalDetailsConfirmedOn = DateTime.Now;
             var appR = new ApprenticeResource(app, Url);

@@ -38,7 +38,11 @@ public IActionResult PatchApprentice(int id, [FromBody] JsonPatchDocument<Appren
 
 ### PATCH and Open API specification
 
-When Swashbuckle generates your Open API specification, it almost gets it correct for `JsonPatchDocument` but not quite.  It seems to add an additional attribute to the definition which is NOT part of the JSON Patch RFC.  To remove the additional erroneous attribute from the API definition, you need to add a [document filter](https://github.com/roysbailey/NetCoreRESTUniformInterface/blob/main/NetCoreRESTUniformInterface/Infrastructure/JsonPatchDocumentFilter.cs) to remove it.
+When [Swashbuckle](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=visual-studio) generates your Open API specification, it almost gets it correct for `JsonPatchDocument` but not quite.  It seems to add an additional attribute to the definition which is NOT part of the JSON Patch RFC.  To remove the additional erroneous attribute from the API definition, you need to add a [document filter](https://github.com/roysbailey/NetCoreRESTUniformInterface/blob/main/NetCoreRESTUniformInterface/Infrastructure/JsonPatchDocumentFilter.cs) to remove it.
+
+### PATCH and resource validation
+
+In order to demonstrate validation with PATCH, two common validation techniques have been used in the same with PATCH.  Firstly, the Apprentice resource demonstrates validation using a [custom validation attribute](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0#custom-attributes).  Secondly, the Apprenticeship resource demonstrates validation using the [`IValidateObject`](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-5.0#ivalidatableobject) approach.  Both approaches ensure that the resource _as a whole_ is valid when the partial patch is applied.
 
 ## Running the sample
 
