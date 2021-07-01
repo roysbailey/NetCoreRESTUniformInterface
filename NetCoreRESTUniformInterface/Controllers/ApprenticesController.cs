@@ -16,7 +16,7 @@ namespace NetCoreRESTUniformInterface.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ApprenticesController : ControllerBase
+    public class ApprenticesController : SampleControllerBase
     {
         private readonly ILogger<ApprenticesController> _logger;
         private IApprenticeCache _apprenticeCache;
@@ -69,20 +69,10 @@ namespace NetCoreRESTUniformInterface.Controllers
                 return NotFound();
             var tmpApp = new Apprentice(app);
 
-            // Apply the PATCH instruction to the entity
-            try
-            {
-                apprenticePatch.ApplyTo(tmpApp);
-                TryValidateModel(tmpApp);
-            }
-            catch (JsonPatchException jpe)
-            {
-                ModelState.AddModelError("error", jpe.Message);
-            }
-            catch (ArgumentNullException ane)
-            {
-                ModelState.AddModelError("error", ane.Message);
-            }
+            // Apply the PATCH instruction to the entity and validate
+            ApplyToValidated(() =>
+                { apprenticePatch.ApplyTo(tmpApp); TryValidateModel(tmpApp); }
+            );
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
