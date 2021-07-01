@@ -78,7 +78,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\r\n    {\r\n        \"value\": \"rb1@bobbins.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"raw": "[\r\n    {\r\n        \"value\": \"rb@bobbins.com\",\r\n        \"path\": \"/Email\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,7 +86,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:44329/apprentices/1/apprenticeships/2",
+					"raw": "https://localhost:44329/apprentices/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -94,8 +94,6 @@
 					"port": "44329",
 					"path": [
 						"apprentices",
-						"1",
-						"apprenticeships",
 						"2"
 					]
 				}
@@ -246,13 +244,13 @@
 			"response": []
 		},
 		{
-			"name": "PATCH apprentice Copy",
+			"name": "PATCH apprenticeship",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\r\n    {\r\n        \"value\": \"2021-08-03T00:00:00\",\r\n        \"path\": \"/StartDate\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
+					"raw": "[\r\n    {\r\n        \"value\": \"2028-08-03T00:00:00\",\r\n        \"path\": \"/StartDate\",\r\n        \"op\": \"replace\"\r\n    }\r\n]",
 					"options": {
 						"raw": {
 							"language": "json"
